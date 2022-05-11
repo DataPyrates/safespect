@@ -24,3 +24,70 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.pr3 {
+    padding-right: 3%;
+}
+ion-toolbar {
+    --background: #292e32;
+    color: white;
+    text-align: center;
+}
+.yellow_color {
+    color: orange !important;
+}
+.font_18 {
+    font-size: 20px !important;
+}
+.font_22 {
+    font-size: 22px !important;
+}
+
+.font_40 {
+    font-size: 40px !important;
+}
+.primary_btn {
+    --ion-color-base: #7774e7 !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+}
+.hideclass {
+    display: none !important;
+}
+.red_color {
+    color: #e71b1b !important;
+}
+.green_color {
+    color: green !important;
+}
+.edit_icon {
+    color: #008b8b !important;
+}
+.grey_color {
+    color: #888da8 !important;
+}
+.ion-color-primary {
+    --ion-color-base: #7774e7 !important;
+    --ion-color-contrast: #fff !important;
+}
+// background-color: #292e32!important;
+//     z-index: 1000;
+.content_card {
+    font-size: 11px !important;
+    color: #4b4f68 !important;
+    line-height: 1.8;
+    border-color: #e6ecf5;
+    vertical-align: middle !important;
+}
+.disabled {
+    cursor: default;
+    opacity: 0.4;
+    pointer-events: none;
+}
+.datalist{
+    width:100%;
+    border:none;
+}
+.text-white-space
+{
+    white-space: unset !important;
+}
