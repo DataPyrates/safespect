@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="login" text=""></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="ion-no-margin">
+        <ion-img src="../../assets/icon/header1.png"></ion-img>
+
+        <ion-card-content>
+            <div class="wrapform">
+                <ion-item>
+
+
+                    <ion-input name="name" type="text" [(ngModel)]="username" placeholder="Your Username" required>
+
+                    </ion-input>
+                    <ion-icon name="mail-outline"></ion-icon>
+                </ion-item>
+                <br />
+                <ion-item>
+
+                    <ion-input name="password" type="password" [(ngModel)]="password" placeholder="Password">
+                    </ion-input>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </ion-item>
+            </div>
+            <div class="password_forgot">
+                <ion-button fill="clear" [routerLink]="['/forgot-password']" class="ion-no-padding">Forgot Password?
+                </ion-button>
+            </div>
+
+            <div class="sign-btn-wrap">
+                <ion-button type="submit" fill="solid" shape="round" class="sign-btn" (click)="login()">
+                    Login
+                </ion-button>
+            </div>
+
+            <div class="text-tag">
+                <span>
+                    Or via Social Media
+                </span>
+            </div>
+            <div class="social-btns">
+                <ion-button fill="clear" class="facebookBtn ion-no-padding">
+                    <ion-img src="../../assets/icon/facebook.png"></ion-img>
+                </ion-button>
+                <ion-button fill="clear" class="appleBtn ion-no-padding">
+                    <ion-img src="../../assets/icon/apple.png"></ion-img>
+                </ion-button>
+                <ion-button fill="clear" class="googleBtn ion-no-padding">
+                    <ion-img src="../../assets/icon/google.png"></ion-img>
+                </ion-button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <div class="ion-card-footer">
+        <span> Don't have an account?</span><button [routerLink]="['/register']" class="ion-no-padding">Sign Up</button>
+    </div>
+</ion-content>

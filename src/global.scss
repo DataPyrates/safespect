@@ -1,0 +1,93 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.pr3 {
+    padding-right: 3%;
+}
+ion-toolbar {
+    --background: #292e32;
+    color: white;
+    text-align: center;
+}
+.yellow_color {
+    color: orange !important;
+}
+.font_18 {
+    font-size: 20px !important;
+}
+.font_22 {
+    font-size: 22px !important;
+}
+
+.font_40 {
+    font-size: 40px !important;
+}
+.primary_btn {
+    --ion-color-base: #7774e7 !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+}
+.hideclass {
+    display: none !important;
+}
+.red_color {
+    color: #e71b1b !important;
+}
+.green_color {
+    color: green !important;
+}
+.edit_icon {
+    color: #008b8b !important;
+}
+.grey_color {
+    color: #888da8 !important;
+}
+.ion-color-primary {
+    --ion-color-base: #7774e7 !important;
+    --ion-color-contrast: #fff !important;
+}
+// background-color: #292e32!important;
+//     z-index: 1000;
+.content_card {
+    font-size: 11px !important;
+    color: #4b4f68 !important;
+    line-height: 1.8;
+    border-color: #e6ecf5;
+    vertical-align: middle !important;
+}
+.disabled {
+    cursor: default;
+    opacity: 0.4;
+    pointer-events: none;
+}
+.datalist{
+    width:100%;
+    border:none;
+}
+.text-white-space
+{
+    white-space: unset !important;
+}
