@@ -1,0 +1,29 @@
+.btn_position{
+  position: relative;
+  top: 75%;
+  margin: 5%;
+  height: 6%;
+}
+.scroll-content{
+  --background:linear-gradient(137deg, #b4d9eb, #040c0f);
+}
+.btncolor {
+  --background: white;
+  color:#7774e7
+}
+.signup{
+  --background: #155c95;
+}
+//   @media screen and (min-height: 580px){
+//     .btn_position{
+//       top: 80%;   
+//     }
+//   }
+
+.img-container {
+position: fixed;
+top: 50%;
+left: 50%;
+/* bring your own prefixes */
+transform: translate(-50%, -50%);
+}

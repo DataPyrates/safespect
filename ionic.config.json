@@ -1,5 +1,7 @@
 {
   "name": "safespect",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
