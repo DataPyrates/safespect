@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="scroll-content">
+<ion-content class="scroll-content" [fullscreen]="true">
   <ion-grid>
     <ion-row color="primary" justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -15,7 +15,15 @@
         <div padding>
           <ion-item>
             <ion-icon name="pin-outline" class="pr3"></ion-icon>
-            <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination"></ion-input>
+            <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination" (click)="mapopen()"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="mapflag">
+            <div class="map-wrapper">
+              <div id="map_center">
+                <img src="assets/icon/google-maps.png" />
+              </div>
+              <div #map id="map"></div>
+            </div>
           </ion-item>
           <ion-item>
             <ion-icon name="location-outline" class="pr3"></ion-icon>
@@ -46,23 +54,12 @@
 </ion-content>
 
 
-<ion-header [translucent]="true">
-
-  <ion-toolbar color="warning">
-    <ion-button (click)="loadMap()" shape="round" color="dark">
-      <ion-icon slot="start" name="locate"></ion-icon>
-      Where I Am
-    </ion-button>
-    <ion-title slot="end">Google Map</ion-title>
-  </ion-toolbar>
-
-</ion-header>
-
+<!-- 
 <ion-content [fullscreen]="true">
 
   <div class="map-wrapper">
     <div id="map_center">
-      <img src="assets/icon/location-marker.png" />
+      <img src="assets/icon/google-maps.png" />
     </div>
     <div #map id="map"></div>
   </div>
@@ -95,4 +92,4 @@
   </ion-grid>
 
 
-</ion-content>
+</ion-content> -->

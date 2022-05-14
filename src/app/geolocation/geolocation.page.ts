@@ -17,6 +17,7 @@ export class GeolocationPage implements OnInit {
 
   latitude: number;
   longitude: number;
+  mapflag: boolean;
 
   constructor(
     private geolocation: Geolocation,
@@ -24,12 +25,12 @@ export class GeolocationPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loadMap();
+   this.loadMap();
   }
 
   loadMap() {
+    console.log('loadmap');
     this.geolocation.getCurrentPosition().then((resp) => {
-
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
 
@@ -43,6 +44,7 @@ export class GeolocationPage implements OnInit {
       this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude);
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.mapflag =false;
 
       this.map.addListener('dragend', () => {
 
@@ -84,7 +86,9 @@ export class GeolocationPage implements OnInit {
       });
 
   }
-
-
+   
+  mapopen(){
+    this.mapflag = true;
+  }
 
 }
