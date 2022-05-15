@@ -12,37 +12,31 @@
     <ion-row color="primary" justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
         <div text-center>
-        <div padding>
-          <ion-item>
-            <ion-icon name="pin-outline" class="pr3"></ion-icon>
-            <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination" (click)="mapopen()"></ion-input>
-          </ion-item>
-          <ion-item *ngIf="mapflag">
-            <div class="map-wrapper">
-              <div id="map_center">
-                <img src="assets/icon/google-maps.png" />
-              </div>
-              <div #map id="map"></div>
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="location-outline" class="pr3"></ion-icon>
-            <ion-label *ngIf="!view">Select Route</ion-label>
-            <ion-select [(ngModel)]="route" (ionChange)="machine_master()">
-              <ion-select-option value="">--Select--</ion-select-option>
-              <ion-select-option *ngFor="let machine of inward_production_data"
-              [value]="machine.machine_master">
-                {{machine.machine_number}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-       
-
-        
-       
-
-       </div>
+          <div padding>
+            <ion-item>
+              <ion-icon name="pin-outline" class="pr3"></ion-icon>
+              <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination"
+                (keyup)="destinationsearch($event)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="destination_flag_initial">
+              <ion-list class="width_full" *ngIf="destination_flag">
+                <ion-item *ngFor="let destn of destination_data" (click)="selectedCity(destn.name)">
+                  {{ destn.name }}
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="location-outline" class="pr3"></ion-icon>
+              <ion-label *ngIf="!view">Select Route</ion-label>
+              <ion-select [(ngModel)]="route" (ionChange)="machine_master()">
+                <ion-select-option value="">--Select--</ion-select-option>
+                <ion-select-option *ngFor="let machine of inward_production_data" [value]="machine.machine_master">
+                  {{machine.machine_number}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
         </div>
-        
+
 
       </ion-col>
     </ion-row>
@@ -52,44 +46,3 @@
     <ion-button (click)="save()">Submit</ion-button>
   </div>
 </ion-content>
-
-
-<!-- 
-<ion-content [fullscreen]="true">
-
-  <div class="map-wrapper">
-    <div id="map_center">
-      <img src="assets/icon/google-maps.png" />
-    </div>
-    <div #map id="map"></div>
-  </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="3">
-        <b>Lattitude</b>
-      </ion-col>
-      <ion-col>
-        {{latitude}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <b>Longitude</b>
-      </ion-col>
-      <ion-col>
-        {{longitude}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <b>Address</b>
-      </ion-col>
-      <ion-col>
-        {{address}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-</ion-content> -->

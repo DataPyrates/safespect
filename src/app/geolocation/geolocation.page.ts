@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { RouteService } from '../api/route.service';
 
 declare var google;
 
@@ -11,84 +12,116 @@ declare var google;
 })
 export class GeolocationPage implements OnInit {
 
-  @ViewChild('map', { static: false }) mapElement: ElementRef;
-  map: any;
-  address: string;
+  // @ViewChild('map', { static: false }) mapElement: ElementRef;
+  // map: any;
+  // address: string;
 
-  latitude: number;
-  longitude: number;
-  mapflag: boolean;
+  // latitude: number;
+  // longitude: number;
+  // mapflag: boolean;
+  destination:any;
+  destination_data: any;
+  destination_flag: boolean;
+  destination_flag_initial: boolean;
 
   constructor(
     private geolocation: Geolocation,
-    private nativeGeocoder: NativeGeocoder) {
+    private nativeGeocoder: NativeGeocoder,
+    private routeser:RouteService) {
   }
 
   ngOnInit() {
-   this.loadMap();
+  //  this.loadMap();
   }
 
-  loadMap() {
-    console.log('loadmap');
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
+  // start google map 
+  // loadMap() {
+  //   console.log('loadmap');
+  //   this.geolocation.getCurrentPosition().then((resp) => {
+  //     this.latitude = resp.coords.latitude;
+  //     this.longitude = resp.coords.longitude;
 
-      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      let mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+  //     let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+  //     let mapOptions = {
+  //       center: latLng,
+  //       zoom: 15,
+  //       mapTypeId: google.maps.MapTypeId.ROADMAP
+  //     }
 
-      this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude);
+  //     this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude);
 
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      this.mapflag =false;
+  //     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  //     this.mapflag =false;
 
-      this.map.addListener('dragend', () => {
+  //     this.map.addListener('dragend', () => {
 
-        this.latitude = this.map.center.lat();
-        this.longitude = this.map.center.lng();
+  //       this.latitude = this.map.center.lat();
+  //       this.longitude = this.map.center.lng();
 
-        this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
-      });
+  //       this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
+  //     });
 
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
+  //   }).catch((error) => {
+  //     console.log('Error getting location', error);
+  //   });
+  // }
+
+  // getAddressFromCoords(lattitude, longitude) {
+  //   console.log("getAddressFromCoords " + lattitude + " " + longitude);
+  //   let options: NativeGeocoderOptions = {
+  //     useLocale: true,
+  //     maxResults: 5
+  //   };
+
+  //   this.nativeGeocoder.reverseGeocode(lattitude, longitude, options)
+  //     .then((result: NativeGeocoderResult[]) => {
+  //       this.address = "";
+  //       let responseAddress = [];
+  //       for (let [key, value] of Object.entries(result[0])) {
+  //         if (value.length > 0)
+  //           responseAddress.push(value);
+
+  //       }
+  //       responseAddress.reverse();
+  //       for (let value of responseAddress) {
+  //         this.address += value + ", ";
+  //       }
+  //       this.address = this.address.slice(0, -2);
+  //     })
+  //     .catch((error: any) => {
+  //       this.address = "Address Not Available!";
+  //     });
+
+  // }
+  // end google map
+
+  destinationsearch(event){
+    if(this.destination && this.destination.length >2){
+      this.routeser.wrap_machine_data(event.target.value).subscribe(
+        (data: any) => {
+          console.log("destination data",data);
+          if (data && data.length > 0) {
+            this.destination_data = data;
+            this.destination_flag = true;
+            this.destination_flag_initial = true;
+            for (let i = 0; i < this.destination_data.length; i++) {
+              if (this.destination_data[i]['name'] == this.destination) {
+                this.destination_flag = false;
+                this.destination_flag_initial = false;
+              }
+            }
+          }
+          else{
+
+          }
+        })
+    }
   }
 
-  getAddressFromCoords(lattitude, longitude) {
-    console.log("getAddressFromCoords " + lattitude + " " + longitude);
-    let options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 5
-    };
-
-    this.nativeGeocoder.reverseGeocode(lattitude, longitude, options)
-      .then((result: NativeGeocoderResult[]) => {
-        this.address = "";
-        let responseAddress = [];
-        for (let [key, value] of Object.entries(result[0])) {
-          if (value.length > 0)
-            responseAddress.push(value);
-
-        }
-        responseAddress.reverse();
-        for (let value of responseAddress) {
-          this.address += value + ", ";
-        }
-        this.address = this.address.slice(0, -2);
-      })
-      .catch((error: any) => {
-        this.address = "Address Not Available!";
-      });
-
-  }
-   
-  mapopen(){
-    this.mapflag = true;
+  selectedCity(transaction_number){
+    this.destination = transaction_number;
+    this.destination_flag = false;
+    this.destination_flag_initial = false;
   }
 
 }
