@@ -17,4 +17,10 @@ export class UserService {
   public register(username,phone,email,password){
     return this.http.get(environment.apiURL+'register.php?username='+username+'&phone='+phone+'&email='+email+'&password='+password);
   }
+  public addcontact(fname,lname,mobile){
+    return this.http.get(environment.apiURL+'addcontact.php?fname='+fname+'&lname='+lname+'&mobile='+mobile);
+  }
+  public getcontact(){
+    return this.http.get(environment.apiURL+'getcontact.php');
+  }
 }

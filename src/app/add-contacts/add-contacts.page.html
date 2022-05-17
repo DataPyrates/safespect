@@ -5,5 +5,22 @@
 </ion-header>
 
 <ion-content>
-
+  <div padding>
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input  name="fname" type="text" placeholder="First Name" [(ngModel)]="fname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call-outline" ></ion-icon>
+      <ion-input  name="lname" type="text" placeholder="Last Name" [(ngModel)]="lname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input name="mobile" type="number" placeholder="Mobile No." [(ngModel)]="mobile" required></ion-input>
+    </ion-item>
+    </div>
+    <div padding class="register_btn">
+      <ion-button  size="large" (click)="addcontact()">Save</ion-button>
+      <ion-button  size="large" type="submit" (click)="Cancel()">Cancel</ion-button>
+    </div>
 </ion-content>

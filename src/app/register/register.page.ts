@@ -38,4 +38,9 @@ export class RegisterPage implements OnInit {
       alert("Please Enter all the details");
     }
   }
+
+  gotoLogin(){
+    this.route.navigate(['/login']);
+  }
+  
 }
