@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'geolocation',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'geolocation',
     loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)
+  },
+  {
+    path: 'contact-details',
+    loadChildren: () => import('./contact-details/contact-details.module').then( m => m.ContactDetailsPageModule)
   },
 
 ];
