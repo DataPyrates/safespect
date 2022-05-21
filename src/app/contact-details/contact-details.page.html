@@ -7,9 +7,9 @@
 <ion-content>
   <ion-card class="padd">
   <ion-item *ngFor="let contact of contacts">
-   <ion-label>First Name:{{contact.fname}}</ion-label>
-   <ion-label>Last Name: {{contact.lname}}</ion-label>
-   <ion-label>Mobile:{{contact.mobile}}</ion-label>
+   <ion-label>{{contact.fname}} {{contact.lname}}</ion-label>
+   <!-- <ion-label>Last Name: </ion-label> -->
+   <ion-label>{{contact.mobile}}</ion-label>
   </ion-item>
 </ion-card>
 </ion-content>
