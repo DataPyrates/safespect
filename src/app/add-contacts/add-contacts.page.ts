@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './../api/user.service';
+import { PopupService } from '../api/popup.service';
 
 @Component({
   selector: 'app-add-contacts',
@@ -12,23 +13,29 @@ export class AddContactsPage implements OnInit {
   lname:any;
   mobile:any;
 
-  constructor(private route: Router, private api: UserService) { }
+  constructor(private route: Router, private api: UserService, public popup: PopupService) { }
 
   ngOnInit() {
   }
 
   addcontact(){
+      if(this.fname && this.lname && this.mobile){
       this.api.addcontact(this.fname,this.lname,this.mobile).subscribe(
       data => {
       console.log(data);
        if((data[0]['status']==1)){
-         alert('Contact added Successfully !!!');
-         this.route.navigate(['/contact-details']);
+         this.popup.showAlert('Contact','Contact added Successfully !!!');
+         this.fname =  this.lname = this.mobile = '';
        }
        else{
         alert(data[0]['msg']);
+        this.popup.showAlert('Contact',data[0]['msg']);
        }
       })
+      }
+      else{
+        this.popup.showAlert('Contact','Please enter all the details');
+      }
       
     }
 

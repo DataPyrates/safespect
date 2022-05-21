@@ -8,3 +8,4 @@ Cordova reference documentation:
 - Splash Screens: https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/
 
 https://www.freakyjolly.com/ionic-google-maps-geolocation-geocoder-application/ ---> geolocation
+ng add @ionic/cordova-builders

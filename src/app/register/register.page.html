@@ -31,7 +31,7 @@
             </ion-item>
             <ion-item>
               <ion-icon name="mail-outline"></ion-icon>
-              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-icon name="lock-closed-outline" ></ion-icon>
@@ -41,7 +41,7 @@
           </div>
           <div padding class="register_btn">
             <ion-button fill="solid" expand="full" (click)="register()">Register</ion-button>
-            <ion-button type="submit" fill="solid" expand="full" (click)="gotoLogin()">Sign In</ion-button>
+            <ion-button type="submit" fill="solid" expand="full" (click)="gotoLogin()" color="dark">Sign In</ion-button>
           </div>
         </ion-col>
       </ion-row>

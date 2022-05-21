@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './../api/user.service';
+import { PopupService } from '../api/popup.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterPage implements OnInit {
   email: any;
   password: any;
  
-  constructor(private route: Router, private api: UserService) { }
+  constructor(private route: Router, private api: UserService, public popup: PopupService) { }
 
   ngOnInit() {
   }
@@ -25,17 +26,17 @@ export class RegisterPage implements OnInit {
       data => {
       console.log(data);
        if((data[0]['status']=='success')){
-         alert('Regsiter Successfully !!!');
+         this.popup.showAlert('Regsiter','Regsiter Successfully !!!');
          this.route.navigate(['/login']);
        }
        else{
-        alert(data[0]['msg']);
+        this.popup.showAlert('Regsiter',data[0]['msg']);
        }
       })
       
     }
     else{
-      alert("Please Enter all the details");
+      this.popup.showAlert('Regsiter','Please enter all the details');
     }
   }
 

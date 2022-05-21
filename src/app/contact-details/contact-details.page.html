@@ -1,15 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>contact-details</ion-title>
+    <ion-title>Contact List</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="padd">
-  <ion-item *ngFor="let contact of contacts">
-   <ion-label>{{contact.fname}} {{contact.lname}}</ion-label>
-   <!-- <ion-label>Last Name: </ion-label> -->
-   <ion-label>{{contact.mobile}}</ion-label>
+<ion-card class="padd ion-card-list" *ngFor="let contact of contacts">
+  <ion-item>
+  <ion-label>Name</ion-label>
+  <ion-label>{{contact.fname}} {{contact.lname}}</ion-label>
+  </ion-item>
+  <ion-item>
+   <ion-label>Mobile</ion-label>
+   <ion-label>{{contact.mobile}}  <ion-icon name="call-outline"></ion-icon>	</ion-label>
   </ion-item>
 </ion-card>
 </ion-content>
