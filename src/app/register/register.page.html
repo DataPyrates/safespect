@@ -1,44 +1,39 @@
-<ion-header class="ion-no-border">
+<ion-content>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="login" text="">
-
-      </ion-back-button>
-    </ion-buttons>
+    <ion-title>Safespect</ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content class="bg-color">
-  <ion-card class="ion-no-margin">
-    <ion-card-header>
-      <ion-card-title>Sign Up</ion-card-title>
-      <ion-card-subtitle>
-        Create your account here by filling up the form below.
-      </ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-icon name="person-outline"></ion-icon>
-        <ion-input name="uname" type="text" placeholder="User Name" [(ngModel)]="username" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="call-outline"></ion-icon>
-        <ion-input name="secret" type="number" placeholder="Mobile No." [(ngModel)]="phone" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="mail-outline"></ion-icon>
-        <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <ion-input name="password" type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
-      </ion-item>
-    </ion-card-content>
-
-    <div class="sign-btn-wrap">
-      <ion-button type="submit" fill="solid" shape="round" class="sign-btn" (click)="register()">
-        Register
-      </ion-button>
-    </div>
-  </ion-card>
+  <form>
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h1>Sign Up</h1>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <ion-input  name="uname" type="text" placeholder="User Name" [(ngModel)]="username" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="call-outline" ></ion-icon>
+              <ion-input  name="secret" type="number" placeholder="Mobile No." [(ngModel)]="phone" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="mail-outline"></ion-icon>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="lock-closed-outline" ></ion-icon>
+              <ion-input name="password" type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+            
+          </div>
+          <div padding class="register_btn">
+            <ion-button  size="large" (click)="register()">Register</ion-button>
+            <ion-button  size="large" type="submit" (click)="gotoLogin()">Sign In</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
