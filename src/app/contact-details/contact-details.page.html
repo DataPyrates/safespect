@@ -5,10 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-card class="padd">
   <ion-item *ngFor="let contact of contacts">
-   <span>First Name:</span><span>{{contact.fname}}</span>
-   <span>Last Name:</span><span>{{contact.lname}}</span>
-   <span>Mobile:</span><span>{{contact.mobile}}</span>
+   <ion-label>First Name:{{contact.fname}}</ion-label>
+   <ion-label>Last Name: {{contact.lname}}</ion-label>
+   <ion-label>Mobile:{{contact.mobile}}</ion-label>
   </ion-item>
+</ion-card>
 </ion-content>
-ß
