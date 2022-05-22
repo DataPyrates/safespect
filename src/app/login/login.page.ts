@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    if(this.email !=undefined && this.password !=undefined){
+    if(this.email && this.password ){
       this.api.login(this.email,this.password).subscribe(
       data => {
         console.log(data);

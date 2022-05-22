@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
@@ -45,4 +45,36 @@
   <div padding class="register_btn">
     <ion-button (click)="save()">Submit</ion-button>
   </div>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Location Tracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-button full icon-left (click)="startTracking()" *ngIf="!isTracking">
+    <ion-icon name="locate"></ion-icon>
+    Start Tracking
+  </button>
+  <button ion-button full color="danger" icon-left (click)="stopTracking()" *ngIf="isTracking">
+    <ion-icon name="hand-right-outline"></ion-icon>
+    Stop Tracking
+  </button>
+
+  <div #map id="map"></div>
+
+  <ion-list>
+    <ion-list-header>Previous Tracks</ion-list-header>
+    <ion-item *ngFor="let route of previousTracks">
+      {{ route.finished | date }}, {{ route.path.length }} Waypoints
+      <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

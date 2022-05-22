@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://solmart.co.in/safespect/api/',
+  apiURL: 'https://solmart.co.in/safespect/api/',
 };
 
 /*
