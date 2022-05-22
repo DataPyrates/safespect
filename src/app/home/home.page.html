@@ -1,12 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-
+    <ion-title>Home</ion-title>
+    <ion-button slot="end" class="logout_btn" [routerLink]="['/login']">
+    <ion-icon  name="power" color="white"></ion-icon>
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card class="ion-no-margin">
-    <ion-img src="../../assets/icon/header.png"> </ion-img>
+    <!-- <ion-img src="../../assets/icon/header.png"> </ion-img> -->
     <ion-card-header>
       <ion-card-title>
         Welcome
