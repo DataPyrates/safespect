@@ -39,9 +39,12 @@ export class GeolocationPage implements OnInit {
     private nativeGeocoder: NativeGeocoder,
     private routeser:RouteService,
     public navCtrl: NavController, 
-    private plt: Platform,
+    private platform: Platform,
     private storage: Storage
     ) {
+      platform.ready().then(() => {
+        this.initMap();
+      });
   }
 
   async ngOnInit() {
@@ -51,7 +54,7 @@ export class GeolocationPage implements OnInit {
 
   // start google map 
   ionViewDidLoad() {
-    this.plt.ready().then(() => {
+    this.platform.ready().then(() => {
       this.loadHistoricRoutes();
  
       let mapOptions = {
@@ -159,4 +162,10 @@ showHistoryRoute(route) {
     this.destination_flag_initial = false;
   }
 
+  initMap() {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 7,
+      center: {lat: 41.85, lng: -87.65}
+    });
+  }
 }

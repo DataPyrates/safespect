@@ -18,5 +18,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   imports: [BrowserModule, IonicStorageModule.forRoot(), IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [ Geolocation, NativeGeocoder,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
-})
+}
+)
+
 export class AppModule {}
