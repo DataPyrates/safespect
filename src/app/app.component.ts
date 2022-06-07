@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
   constructor(platform: Platform) {
     const config = {
-      apiKey: 'AIzaSyAj_yA1BGGim5rJvjrzndCA6kXzHk-yjCU',
+      apiKey: 'AIzaSyChrhjUotCM1mGqsozwQVSZ72Xk7aCyxJk',
       authDomain: environment.apiURL,
       databaseURL: 'https://geo-tracker-830fa-default-rtdb.firebaseio.com/',
       projectId: 'geo-tracker-830fa',

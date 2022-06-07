@@ -98,7 +98,12 @@ startTracking() {
           this.redrawPath(this.trackedRoute);
         }, 0);
       });
- 
+      console.log(this.trackedRoute);
+  }
+  shareLocation(){
+    var url = 'http://maps.google.com/maps?q='+this.trackedRoute['lat']+','+this.trackedRoute['lng'];
+    //var url = 'http://maps.google.com/maps?q=24.197611,120.780512'
+    console.log(url,"url");
   }
  
   redrawPath(path) {
