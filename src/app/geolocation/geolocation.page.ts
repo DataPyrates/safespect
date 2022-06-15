@@ -6,6 +6,8 @@ import { NavController, Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+import { ELocalNotificationTriggerUnit, LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 
 declare var google;
 
@@ -19,17 +21,17 @@ export class GeolocationPage implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   currentMapTrack = null;
- 
+
   isTracking = false;
   trackedRoute = [];
   previousTracks = [];
- 
+
   positionSubscription: Subscription;
 
   // latitude: number;
   // longitude: number;
   // mapflag: boolean;
-  destination:any;
+  destination: any;
   destination_data: any;
   destination_flag: boolean;
   destination_flag_initial: boolean;
@@ -37,26 +39,38 @@ export class GeolocationPage implements OnInit {
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
-    private routeser:RouteService,
-    public navCtrl: NavController, 
+    private routeser: RouteService,
+    public navCtrl: NavController,
     private platform: Platform,
-    private storage: Storage
-    ) {
-      platform.ready().then(() => {
-        this.initMap();
-      });
+    private storage: Storage,
+    private localNotifications: LocalNotifications
+  ) {
+    platform.ready().then(() => {
+      this.initMap();
+    });
   }
 
   async ngOnInit() {
-  //  this.loadMap();
-  await this.storage.create();
+    //  this.loadMap();
+    await this.storage.create();
+  }
+  registerNotification(seconds: number) {
+    this.localNotifications.schedule({
+      title: 'my ${ms} notification',
+      text: 'http://maps.google.com/maps?q=24.197611,120.780512',
+      trigger: {
+        in: seconds,
+        unit: ELocalNotificationTriggerUnit.SECOND
+      },
+    });
+
   }
 
   // start google map 
   ionViewDidLoad() {
     this.platform.ready().then(() => {
       this.loadHistoricRoutes();
- 
+
       let mapOptions = {
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -65,7 +79,7 @@ export class GeolocationPage implements OnInit {
         fullscreenControl: false
       }
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
+
       this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         this.map.setCenter(latLng);
@@ -75,7 +89,7 @@ export class GeolocationPage implements OnInit {
       });
     });
   }
- 
+
   loadHistoricRoutes() {
     this.storage.get('routes').then(data => {
       if (data) {
@@ -84,10 +98,10 @@ export class GeolocationPage implements OnInit {
     });
   }
 
-startTracking() {
+  startTracking() {
     this.isTracking = true;
     this.trackedRoute = [];
- 
+
     this.positionSubscription = this.geolocation.watchPosition()
       .pipe(
         filter((p) => p.coords !== undefined) //Filter Out Errors
@@ -98,19 +112,19 @@ startTracking() {
           this.redrawPath(this.trackedRoute);
         }, 0);
       });
-      console.log(this.trackedRoute);
+    console.log(this.trackedRoute);
   }
-  shareLocation(){
-    var url = 'http://maps.google.com/maps?q='+this.trackedRoute['lat']+','+this.trackedRoute['lng'];
+  shareLocation() {
+    var url = 'http://maps.google.com/maps?q=' + this.trackedRoute['lat'] + ',' + this.trackedRoute['lng'];
     //var url = 'http://maps.google.com/maps?q=24.197611,120.780512'
-    console.log(url,"url");
+    console.log(url, "url");
   }
- 
+
   redrawPath(path) {
     if (this.currentMapTrack) {
       this.currentMapTrack.setMap(null);
     }
- 
+
     if (path.length > 1) {
       this.currentMapTrack = new google.maps.Polyline({
         path: path,
@@ -123,26 +137,26 @@ startTracking() {
     }
   }
 
-stopTracking() {
-  let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
-  this.previousTracks.push(newRoute);
-  this.storage.set('routes', this.previousTracks);
- 
-  this.isTracking = false;
-  this.positionSubscription.unsubscribe();
-  // this.currentMapTrack.setMap(null);
-}
- 
-showHistoryRoute(route) {
-  this.redrawPath(route);
-}
+  stopTracking() {
+    let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
+    this.previousTracks.push(newRoute);
+    this.storage.set('routes', this.previousTracks);
+
+    this.isTracking = false;
+    this.positionSubscription.unsubscribe();
+    // this.currentMapTrack.setMap(null);
+  }
+
+  showHistoryRoute(route) {
+    this.redrawPath(route);
+  }
   // end google map
 
-  destinationsearch(event){
-    if(this.destination && this.destination.length >2){
+  destinationsearch(event) {
+    if (this.destination && this.destination.length > 2) {
       this.routeser.wrap_machine_data(event.target.value).subscribe(
         (data: any) => {
-          console.log("destination data",data);
+          console.log("destination data", data);
           if (data && data.length > 0) {
             this.destination_data = data;
             this.destination_flag = true;
@@ -154,14 +168,14 @@ showHistoryRoute(route) {
               }
             }
           }
-          else{
+          else {
 
           }
         })
     }
   }
 
-  selectedCity(transaction_number){
+  selectedCity(transaction_number) {
     this.destination = transaction_number;
     this.destination_flag = false;
     this.destination_flag_initial = false;
@@ -170,7 +184,7 @@ showHistoryRoute(route) {
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 7,
-      center: {lat: 41.85, lng: -87.65}
+      center: { lat: 41.85, lng: -87.65 }
     });
   }
 }
