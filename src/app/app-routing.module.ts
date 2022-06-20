@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'contact-details',
     loadChildren: () => import('./contact-details/contact-details.module').then( m => m.ContactDetailsPageModule)
+  },  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   },
+
 
 ];
 

@@ -5,77 +5,94 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="ion-no-margin">
-        <ion-img src="../../assets/icon/header.png"> </ion-img>
-        <ion-card-header>
-            <ion-card-title>
-                Login
-            </ion-card-title>
-            <ion-card-subtitle>
-                SafeSpect is a Welfare Monitoring and Journey Management solution for Friends and Family.
-            </ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-slide>
-            <div class="contaier-login">
-                <ion-grid>
-                    <ion-row>
-                        <ion-col>
-                            <ion-list>
-
-                                <ion-item>
-                                    <ion-icon name="person" class="icon-login"></ion-icon>
-                                    <ion-input name="email" type="email" [(ngModel)]="email" required
-                                        placeholder="Your Username"></ion-input>
-                                </ion-item>
-                                <br />
-                                <ion-item>
-                                    <ion-icon name="lock-closed" class="icon-login"></ion-icon>
-                                    <ion-input name="password" type="password" [(ngModel)]="password"
-                                        placeholder="Password"></ion-input>
-                                </ion-item>
-
-                            </ion-list>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col>
-                            <ion-button type="submit" fill="solid" expand="full" (click)="login()">
-                                Login
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                   <!-- <ion-col>
-                        <ion-label>
-                            <h3>Forgot Password?</h3>
-                            [routerLink]="['/forgot-password']"
-                        </ion-label>
-                    </ion-col> -->
-                        <ion-col>
-                            <ion-button fill="solid" expand="full" [routerLink]="['/register']" color="dark">
-                                Register
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                    <div class="text-tag">
-                        <span>
-                          Or via Social Media
-                        </span>
-                      </div>
-                      <div class="social-btns">
-                        <ion-button fill="clear" class="facebookBtn ion-no-padding">
-                          <ion-img src="../../assets/icon/facebook.png"></ion-img>
-                        </ion-button>
-                        <ion-button fill="clear" class="appleBtn ion-no-padding">
-                          <ion-img src="../../assets/icon/apple.png"></ion-img>
-                        </ion-button>
-                        <ion-button fill="clear" class="googleBtn ion-no-padding">
-                          <ion-img src="../../assets/icon/google.png"></ion-img>
-                        </ion-button>
-                      </div>
-                </ion-grid>
-            </div>
-        </ion-slide>
-    </ion-card>
+    <ion-avatar>
+        <ion-img src="assets/icon/2.png"></ion-img>
+    </ion-avatar>
+    <ion-card-header>
+        <ion-card-title>
+            Login
+        </ion-card-title>
+        <ion-card-subtitle>
+            SafeSpect is a Welfare Monitoring and Journey Management solution for Friends and Family.
+        </ion-card-subtitle>
+    </ion-card-header>
+    
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-list lines="none">
+          <ion-item color="light" class="ion-margin-bottom">
+            <ion-icon name="mail" slot="start" color="primary"></ion-icon> 
+            <ion-input
+              type="email"
+              name="email"
+              ngModel
+              email
+              #emailCtrl="ngModel"
+              placeholder="Email"
+              required>
+            </ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched" class="ion-text-center">
+            <p class="errorMsg">* Please enter a valid email address</p>
+          </ion-text>
+          <ion-item color="light">
+            <ion-icon name="key" slot="start" color="primary"></ion-icon> 
+            <ion-icon color="primary" slot="end" (click)="changeType()" [name]="type ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+            <ion-input
+              [type]="type ? 'password' : 'text'"
+              name="password"
+              ngModel
+              #passwordCtrl="ngModel"
+              placeholder="Password"
+              required
+              minlength="8">
+            </ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!passwordCtrl.valid && passwordCtrl.touched" class="ion-text-center">
+            <p class="errorMsg">* Password must of of minimum 8 characters long.</p>
+          </ion-text>
+        </ion-list>
+    
+        <p class="ion-text-right">Forgot password?</p>
+    
+        <ion-button 
+          *ngIf="!isLogin" 
+          [disabled]="!f.valid"
+          expand="block" 
+          shape="round" 
+          type="submit" 
+          color="primary">
+          SIGN IN
+        </ion-button>
+    
+        <div class="ion-text-center" *ngIf="isLogin">
+          <ion-button 
+            shape="round" color="primary" [disabled]="!f.valid">
+            <ion-spinner name="circles"></ion-spinner>
+          </ion-button>
+        </div>
+        
+      </form>
+    
+      <ion-text color="primary" class="ion-text-center">
+        <p class="marginTop">
+          Don't have an account?
+          <b>Sign Up</b>
+        </p>
+      </ion-text> 
+      <div class="text-tag">
+        <span>
+          Or via Social Media
+        </span>
+      </div>
+      <div class="social-btns">
+        <ion-button fill="clear" class="facebookBtn ion-no-padding">
+          <ion-img src="../../assets/icon/facebook.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear" class="appleBtn ion-no-padding">
+          <ion-img src="../../assets/icon/apple.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear" class="googleBtn ion-no-padding">
+          <ion-img src="../../assets/icon/google.png"></ion-img>
+        </ion-button>
+      </div>   
 </ion-content>
