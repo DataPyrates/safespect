@@ -23,4 +23,7 @@ export class UserService {
   public getcontact(){
     return this.http.get(environment.apiURL+'getcontact.php');
   }
+  public forgot(email){
+    return this.http.get(environment.apiURL+'forgot_password.php?email='+email);
+  }
 }

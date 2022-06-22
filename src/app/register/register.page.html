@@ -1,14 +1,25 @@
-<ion-content>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Safespect</ion-title>
+
   </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-no-margin">
+    <ion-img src="../../assets/icon/header.png"> </ion-img>
+    <ion-card-header>
+      <ion-card-title>
+        Register Here!
+      </ion-card-title>
+      <ion-card-subtitle>
+        SafeSpect is a Welfare Monitoring and Journey Management solution for Friends and Family.
+
+      </ion-card-subtitle>
+    </ion-card-header>
   <form>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h1>Sign Up</h1>
-          </div>
           <div padding>
             <ion-item>
               <ion-icon name="person-circle-outline"></ion-icon>
@@ -20,7 +31,7 @@
             </ion-item>
             <ion-item>
               <ion-icon name="mail-outline"></ion-icon>
-              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+              <ion-input name="email" type="email" placeholder="Your@email.com" [(ngModel)]="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-icon name="lock-closed-outline" ></ion-icon>
@@ -29,11 +40,12 @@
             
           </div>
           <div padding class="register_btn">
-            <ion-button  size="large" (click)="register()">Register</ion-button>
-            <ion-button  size="large" type="submit" (click)="gotoLogin()">Sign In</ion-button>
+            <ion-button fill="solid" expand="full" (click)="register()">Register</ion-button>
+            <ion-button type="submit" fill="solid" expand="full" (click)="gotoLogin()" color="dark">Sign In</ion-button>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
+  </ion-card>
 </ion-content>

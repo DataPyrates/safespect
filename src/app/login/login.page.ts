@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './../api/user.service';
-
+import { PopupService } from '../api/popup.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   email: any;
   password: any;
   loginData: Object;
-  constructor(private route: Router, private api: UserService) { }
+  constructor(private route: Router, private api: UserService, public popup: PopupService) { }
 
   ngOnInit() {
     var user_id =localStorage.getItem('user_id');
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    if(this.email !=undefined && this.password !=undefined){
+    if(this.email && this.password ){
       this.api.login(this.email,this.password).subscribe(
       data => {
         console.log(data);
@@ -31,12 +31,12 @@ export class LoginPage implements OnInit {
             this.route.navigate(['/home']);
           }
           else{
-            alert("Invalid Password");
+            this.popup.showAlert('Login','Invalid Password');
           }
       })
     }
     else{
-      alert("Please Enter Username and Password");
+      this.popup.showAlert('Login','Please Enter Username & Password');
     }
   }
 }

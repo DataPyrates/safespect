@@ -1,0 +1,178 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add route</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="scroll-content" [fullscreen]="true">
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <div padding>
+            <ion-item>
+              <ion-icon name="pin-outline" class="pr3"></ion-icon>
+              <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination"
+                (keyup)="destinationsearch($event)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="destination_flag_initial">
+              <ion-list class="width_full" *ngIf="destination_flag">
+                <ion-item *ngFor="let destn of destination_data" (click)="selectedCity(destn.name)">
+                  {{ destn.name }}
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="location-outline" class="pr3"></ion-icon>
+              <ion-label *ngIf="!view">Select Route</ion-label>
+              <ion-select [(ngModel)]="route" (ionChange)="machine_master()">
+                <ion-select-option value="">--Select--</ion-select-option>
+                <ion-select-option *ngFor="let machine of inward_production_data" [value]="machine.machine_master">
+                  {{machine.machine_number}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div padding class="register_btn">
+    <ion-button (click)="save()">Submit</ion-button>
+  </div>
+</ion-content> -->
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Location Tracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button full icon-left (click)="startTracking()" *ngIf="!isTracking">
+    <ion-icon name="locate"></ion-icon>
+    Start Tracking
+  </button>
+  <button ion-button full color="danger" icon-left (click)="stopTracking()" *ngIf="isTracking">
+    <ion-icon name="hand-right-outline"></ion-icon>
+    Stop Tracking
+  </button>
+  <button ion-button full icon-left (click)="shareLocation()">
+    <ion-icon name="locate"></ion-icon>
+    Share Location
+  </button>
+
+  <div #map id="map"></div>
+
+  <ion-list>
+    <ion-list-header>Previous Tracks</ion-list-header>
+    <ion-item *ngFor="let route of previousTracks">
+      {{ route.finished | date }}, {{ route.path.length }} Waypoints
+      <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
+    </ion-item>
+  </ion-list>
+</ion-content>  -->
+<!-- <ion-content padding>
+  <div #map id="map"></div>
+</ion-content> -->
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add route</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="scroll-content" [fullscreen]="true">
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <div padding>
+            <ion-item>
+              <ion-icon name="pin-outline" class="pr3"></ion-icon>
+              <ion-input name="destination" type="text" placeholder="Enter destination" [(ngModel)]="destination"
+                (keyup)="destinationsearch($event)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="destination_flag_initial">
+              <ion-list class="width_full" *ngIf="destination_flag">
+                <ion-item *ngFor="let destn of destination_data" (click)="selectedCity(destn.name)">
+                  {{ destn.name }}
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="location-outline" class="pr3"></ion-icon>
+              <ion-label *ngIf="!view">Select Route</ion-label>
+              <ion-select [(ngModel)]="route" (ionChange)="machine_master()">
+                <ion-select-option value="">--Select--</ion-select-option>
+                <ion-select-option *ngFor="let machine of inward_production_data" [value]="machine.machine_master">
+                  {{machine.machine_number}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div padding class="register_btn">
+    <ion-button (click)="save()">Submit</ion-button>
+  </div>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" (click)="history.go(-1);"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Location Tracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button full icon-left (click)="startTracking()" *ngIf="!isTracking">
+    <ion-icon name="locate"></ion-icon>
+    Start Tracking
+  </button>
+  <button ion-button full color="danger" icon-left (click)="stopTracking()" *ngIf="isTracking">
+    <ion-icon name="hand-right-outline"></ion-icon>
+    Stop Tracking
+  </button>
+  <button ion-button full icon-left (click)="shareLocation()">
+    <ion-icon name="locate"></ion-icon>
+    Share Location
+  </button>
+
+  <div #map id="map"></div>
+
+  <ion-list>
+    <ion-list-header>Previous Tracks</ion-list-header>
+    <ion-item *ngFor="let route of previousTracks">
+      {{ route.finished | date }}, {{ route.path.length }} Waypoints
+      <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-content>
+  <ion-button (click)="registerNotification(3)">
+    Send Notification
+  </ion-button>
+</ion-content>
+<!-- <ion-content padding>
+  <div #map id="map"></div>
+</ion-content> -->

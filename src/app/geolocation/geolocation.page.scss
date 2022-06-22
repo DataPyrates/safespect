@@ -1,0 +1,69 @@
+.center {
+  text-align: center;
+  color: #515365;
+}
+.register_btn {
+  text-align: center;
+  --background: #607d8b;
+  margin-top: 3%;
+  width: 100%;
+  color: white;
+}
+.scroll-content {
+  --background: white;
+}
+ion-item {
+  --background: white;
+  color: grey;
+}
+ion-icon {
+  color: #7a9e9f;
+}
+ion-button {
+  --background: #7774e7;
+  color: white;
+  font-size: 15px;
+}
+.content_card {
+  font-size: 11px;
+}
+
+// start geolocation
+#map_canvas {
+  width: 90%;
+  height: 80%;
+  border: 1px solid red;
+}
+
+
+#address {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#map {
+  width: 100%;
+  height: 70vh;
+}
+
+.map-wrapper {
+  position: relative;
+
+  #map_center {
+    position: absolute;
+    z-index: 99;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -21px;
+    margin-top: -41px;
+  }
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+  }
+// end geolocation

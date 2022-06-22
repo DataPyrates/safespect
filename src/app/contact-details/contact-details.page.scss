@@ -1,0 +1,34 @@
+ion-card {
+  --ion-background-color: transparent;
+  box-shadow: none !important;
+}
+
+ion-content {
+  --ion-background-color: transparent;
+  margin-top: 10px;
+}
+
+.bg-color {
+  background: #E1EAF9;
+
+}
+
+.padd {
+  padding-top: 15px;
+  border: 1px solid blue;
+  border-radius: 15px;
+}
+
+ion-list-header {
+  padding-top: 5px;
+  font-weight: bolder;
+}
+
+ion-button {
+  padding-top: 10px;
+}
+
+.input-wrapper{
+  flex-direction: row !important;
+  display: inline-block !important;
+}

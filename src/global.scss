@@ -29,7 +29,7 @@
     padding-right: 3%;
 }
 ion-toolbar {
-    --background: #292e32;
+    --background: #215AB7;
     color: white;
     text-align: center;
 }
@@ -90,4 +90,13 @@ ion-toolbar {
 .text-white-space
 {
     white-space: unset !important;
+}
+.width_full{
+    width:100%;
+}
+.ion-icon{
+    font-size: 30px !important;
+}
+.logout_btn{
+    --background: none !important;
 }
