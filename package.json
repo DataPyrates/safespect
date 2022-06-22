@@ -19,8 +19,10 @@
     "@angular/platform-browser": "~13.2.2",
     "@angular/platform-browser-dynamic": "~13.2.2",
     "@angular/router": "~13.2.2",
+    "@ionic-native/contacts": "^5.36.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/geolocation": "^5.27.0",
+    "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/local-notifications": "^5.36.0",
     "@ionic-native/native-geocoder": "^5.36.0",
     "@ionic/angular": "^6.0.0",
@@ -84,10 +86,14 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "To track your walks"
+        "GEOLOCATION_USAGE_DESCRIPTION": "To track your walks",
+        "GPS_REQUIRED": "true"
       },
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-contacts": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }
