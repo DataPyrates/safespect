@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Contacts</ion-title>
+    <ion-button slot="end" class="logout_btn" [routerLink]="['/login']">
+      <ion-icon name="power" color="white"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input name="fname" type="text" placeholder="First Name" [(ngModel)]="fname" required></ion-input>
+      <ion-input name="lname" type="text" placeholder="Last Name" [(ngModel)]="lname" required></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-icon name="call-outline" ></ion-icon>
+      <ion-input  name="lname" type="text" placeholder="Last Name" [(ngModel)]="lname" required></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input name="mobile" type="number" placeholder="Mobile No." [(ngModel)]="mobile" min="10" max="15" required>
+      </ion-input>
+    </ion-item>
+  </div>
+  <div padding class="register_btn">
+    <ion-button fill="solid" expand="full" (click)="addcontact()">Save</ion-button>
+    <ion-button type="submit" fill="solid" expand="full" (click)="Cancel()">Cancel</ion-button>
+  </div>
+</ion-content>
